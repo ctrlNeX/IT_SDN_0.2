@@ -1,0 +1,18 @@
+To do:
+- End-to-end acknowlegements
+  - Currently there is a naïve reliability mechanism on the nodes
+    that retransmit packets at every predefined time interval.
+    The packet types are flow requests, flow register and neighbor report.
+    The controller sends source routed acks for flow register and neighbor report,
+    while set flows serve as ack for flow requests.
+    It could be improved by:
+      1) setting the time dynamically
+      2) not accumulating repeated packets in the retransmission window (NR, most importantly)
+- Proper statistcs for multiple flow setups
+- One hop loop detection
+  - Partially adressed by the network layer seq_no repetition detection
+
+Known bugs:
+- Node reconnection for null_cd
+- Node does not eliminate enqueued flow request packet after receiving flow setup.
+- Debug messages on Contiki Controller may cause loss of serial packets
